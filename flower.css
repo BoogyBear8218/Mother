@@ -1,0 +1,139 @@
+body {
+  background: #fff6f8;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 420px;
+  position: relative;
+  text-align: center;
+}
+
+.flower-title {
+  margin-bottom: 50px;
+  color: #ff6f91;
+  font-size: 1.6rem;
+}
+
+.stage {
+  position: relative;
+  height: auto;
+  aspect-ratio: 300 / 350; /* keeps SVG proportion */
+}
+
+.flower {
+  display: block;
+  margin: 0 auto;
+  width: 100%;  /* scale SVG to container */
+  height: auto;
+}
+
+
+.petal {
+  cursor: pointer;
+  fill: #ff9eb5;
+  stroke: #ff6f91;
+  stroke-width: 1;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.center {
+  fill: #f7c948;
+  stroke: #f1b600;
+  stroke-width: 2;
+}
+
+.letter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ff9eb5;
+  font-size: large;
+  padding: 50px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+    font-size: clamp(14px, 4vw, 18px); /* scales between 14px and 18px */
+  padding: 5vw; /* scales padding on small screens */
+}
+
+.letter.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#replay {
+  margin-top: 15px;
+  width: 160px;
+  height: 40px;
+  background: #ff9eb5;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+    width: clamp(120px, 40%, 160px);
+  height: 40px;
+  font-size: clamp(12px, 3vw, 14px);
+}
+
+/* Heart garden using SVG hearts */
+.heart-garden {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.heart-garden svg.heart {
+  position: absolute;
+  width: clamp(24px, 5vw, 36px);
+  height: auto;
+  fill: red;
+  transform-origin: center;
+  animation: floatUp 5s ease-in forwards;  /* slightly longer animation */
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.8) rotate(0deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-50px) scale(1.2) rotate(15deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-300px) scale(0.6) rotate(-15deg); /* go higher */
+    opacity: 0;
+  }
+}
+
+.heart-message {
+  position: absolute;
+  top: 30%;  /* move message slightly higher */
+  width: 100%;
+  text-align: center;
+  font-size: clamp(1.2rem, 6vw, 2rem);
+  color: #ff4d6d;
+  font-weight: bold;
+  opacity: 0;
+  animation: fadeIn 2s forwards 0.5s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
